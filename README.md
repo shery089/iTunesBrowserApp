@@ -9,7 +9,8 @@ It is developed in latest version of Ionic i.e. 3.19.0 and it utilizes iTunes AP
   
 ### How to Install ###
 
-** First Clone the repo with **
+##### First Clone the repo with #####
+
 `git clone https://github.com/shery089/iTunesBrowserApp.git`
 
 then cd into the new folder and run
