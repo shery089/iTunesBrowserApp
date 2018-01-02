@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search</ion-title>
+    <ion-buttons *ngIf="usesFilter" end>
+      <button (click)="openFilters()" class="light-background">
+        <ion-icon name="funnel" [color]="usesFilter ? 'primary' : 'inherit'"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- ionCancel was not working  -->
+  <ion-searchbar (ionClear)="showAllResults()" (keyup)="searchKeyword($event)" [(ngModel)]="keyword"></ion-searchbar>
+  <ion-list ng-hide="!keyword.trim()" >
+    <h4 padding no-margin *ngIf="itune_api_results.resultCount" text-right>
+      Total Results: {{itune_api_results.resultCount}}
+    </h4>
+    <ion-item *ngFor="let result of itune_api_results.results">
+      <ion-thumbnail item-left>
+        <img [src]="result.artworkUrl100" alt="">
+      </ion-thumbnail>
+      <h2>{{result.trackName}}</h2>
+      <p>{{result.artistName}}</p>
+      <ion-icon item-right [name]="result.kind === 'song' ? 'musical-notes' : 'film'"></ion-icon>
+      <ion-icon item-right name="person" [hidden]="result.kind !== 'song'"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
