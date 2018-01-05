@@ -13,8 +13,17 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="reloadData($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="bubbles"
+            refreshingText="Refreshing...">
+
+    </ion-refresher-content>
+  </ion-refresher>
   <!-- ionCancel was not working  -->
-  <ion-searchbar (ionClear)="showAllResults()" (keyup)="searchKeyword($event)" [(ngModel)]="keyword"></ion-searchbar>
+  <ion-searchbar (ionClear)="showAllResults()" (keyup.enter)="searchKeyword($event)" [(ngModel)]="keyword"></ion-searchbar>
   <ion-list ng-hide="!keyword.trim()" >
     <h4 padding no-margin *ngIf="itune_api_results.resultCount" text-right>
       Total Results: {{itune_api_results.resultCount}}
@@ -25,8 +34,8 @@
       </ion-thumbnail>
       <h2>{{result.trackName}}</h2>
       <p>{{result.artistName}}</p>
-      <ion-icon item-right [name]="result.kind === 'song' ? 'musical-notes' : 'film'"></ion-icon>
-      <ion-icon item-right name="person" [hidden]="result.kind !== 'song'"></ion-icon>
+      <ion-icon (click)="openPreview(result)" item-right [name]="result.kind === 'song' ? 'musical-notes' : 'film'"></ion-icon>
+      <ion-icon (click)="gotoArtist(result)" item-right name="person" [hidden]="result.kind !== 'song'"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

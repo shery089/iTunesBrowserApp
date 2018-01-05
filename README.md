@@ -6,7 +6,9 @@ It is developed in latest version of Ionic i.e. 3.19.0 and it utilizes iTunes AP
 
 * Search Songs, Movies from iTunes API
   * Filter those search results
-  
+  * Error Modals
+* Artist Albums in Slides
+
 ### How to Install ###
 
 ##### First Clone the repo with #####

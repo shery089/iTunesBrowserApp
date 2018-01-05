@@ -29,6 +29,10 @@ export class SettingsPage {
         currency: 'руб.'
       }
     ];
-    console.log(this.countries);
   }
+
+  getCountrySettings(){
+    return this.countries;
+  }
+
 }

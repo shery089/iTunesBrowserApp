@@ -8,10 +8,15 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
+import { PreviewModalPage } from '../pages/preview-modal/preview-modal';
+import { ContactUsPage } from '../pages/contact-us/contact-us';
+import { ArtistPage } from '../pages/artist/artist';
 
+import { Keyboard } from '@ionic-native/keyboard';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ItunesServiceProvider } from '../providers/itunes-service/itunes-service';
+import { CountriesProvider } from '../providers/countries/countries';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,10 @@ import { ItunesServiceProvider } from '../providers/itunes-service/itunes-servic
     HomePage,
     ListPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    PreviewModalPage,
+    ContactUsPage,
+    ArtistPage
   ],
   imports: [
     BrowserModule,
@@ -32,13 +40,18 @@ import { ItunesServiceProvider } from '../providers/itunes-service/itunes-servic
     HomePage,
     ListPage,
     SearchPage,
-    SettingsPage
+    SettingsPage,
+    PreviewModalPage,
+    ContactUsPage,
+    ArtistPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ItunesServiceProvider
+    ItunesServiceProvider,
+    Keyboard,
+    CountriesProvider
   ]
 })
 export class AppModule {}
